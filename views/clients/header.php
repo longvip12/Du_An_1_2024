@@ -149,9 +149,19 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword">
                         <button class="btn btn-outline-success" type="button" id="search">Search</button>
             </form>
-            <a class="btn-sm-square bg-white rounded-circle ms-3" href="admin.html">
-              <small class="fa fa-user text-body"></small>
-            </a>
+                      <?php if(isset($_SESSION["user_name"])) { ?>
+                  
+                    
+                    <a href="#"><?= $_SESSION["user_name"] ?><span>&#11167</span></a>
+                    <a href="<?= ROOT_URL . '?ctl=login' ?>"> Logout </a>
+                    
+                  
+                  <?php } else{ ?>
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="<?= ROOT_URL . '?ctl=login' ?>">
+                        <small class="fa fa-user text-body"></small>
+                    </a>
+                      <?php } ?>
+            
             <a class="btn-sm-square bg-white rounded-circle ms-3" href="shopping-cart.html">
               <small class="fa fa-shopping-bag text-body"></small>
             </a>

@@ -13,5 +13,6 @@ class homeController
 
         return view("clients.home",
          compact('cosmetics','list_products' ,'categories'));
+         
     }
 }
