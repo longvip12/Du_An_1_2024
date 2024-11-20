@@ -1,6 +1,24 @@
 <?php include_once ROOT_DIR . "views/clients/header.php" ?>
+
    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
       </div>
+            <div class="carousel-item">
+                <img class="w-100" src="img/bg7.webp" alt="Image" />
+                <div class="carousel-caption">
+                <div class="container">
+                    <div class="row justify-content-start">
+                    <div class="col-lg-7">
+                        <!-- <a
+                        href=""
+                        class="btn btn-blu rounded-pill py-sm-3 px-sm-5"
+                        >XEM THÊM</a
+                        > -->
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
