@@ -76,7 +76,7 @@
         <a href="<?= ROOT_URL ?>" class="navbar-brand ms-4 ms-lg-0">
           <h1 class="fw-bold text-primary m-0">
             <span class="text-secondary">
-            <img class="logo" src="img/logo.webp" alt="Image" />
+            <img class="logo" src="img/logo.jpg" alt="Image" />
 
             </span>
           </h1>
@@ -113,7 +113,7 @@
              <div class="menu" id="navar">
               <ul>
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="<?= ROOT_URL ?>">Home</a>
                 </li>
                 <li class="drop-two">
                   <a href="#">Products<span>&#11167</span></a>
