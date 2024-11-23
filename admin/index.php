@@ -10,8 +10,7 @@ require_once __DIR__ . "/../models/Product.php";
 require_once __DIR__ . "/../controllers/admin/AdminProductController.php";
 require_once __DIR__ . "/../controllers/admin/AdminCategoryController.php";
 $ctl = $_GET['ctl'] ?? "";
-
-match ($ctl) {
+    match ($ctl) {
     '' => view("admin.dashboard") ,
     'listsp' => (new AdminProductController)->index(),
     'addsp' => (new AdminProductController)->create(),
@@ -27,3 +26,4 @@ match ($ctl) {
     'deletedm' => (new AdminCategoryController)->delete(),
     default => view('err.404'),
 };
+

@@ -34,7 +34,7 @@
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="">
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -43,9 +43,12 @@
                 </div>
                 <span>or use your email for registration</span>
                 <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Full Nam" />
+                `<input type="text" placeholder="Address" />`
+                <input type="number" placeholder="Phone Number" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <button type="submit" name="submitLogout">Sign Up</button>
+                <button type="submit" name="submitRegister">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">

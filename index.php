@@ -8,6 +8,7 @@ require_once __DIR__ . "/models/Category.php";
 require_once __DIR__ . "/models/Product.php";
 require_once __DIR__ . "/common/function.php";
 require_once __DIR__ . "/controllers/SearchController.php";
+require_once __DIR__ . "/controllers/CartController.php";
 
 
 require_once __DIR__ . "/controllers/AccountController.php";
@@ -20,6 +21,8 @@ match ($ctl){
     '', 'home'=>(new homeController)->index(),
     'category'=>(new ProductController)->list(),
     'search'=>(new SearchController)->search(),
+    'detail'    => (new ProductController)->show(),
+    'add-cart'  => (new CartController)->addCart(),
     'login' => (new AccountController)->login(),
     'logout' => (new AccountController)->logout(),
     default => view("err.404"),

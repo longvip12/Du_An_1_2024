@@ -1,14 +1,14 @@
 <?php include_once ROOT_DIR . "views/clients/header.php" ?>
 
 <div class="container mt-5">
-    <h1>Từ khóa tìm kiếm :<?= $keyword ?></h1>
+   
         <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
                     <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                         <h1 class="display-5 mb-3"></h1>
-                       
+                        <h1>Từ khóa tìm kiếm :<?= $keyword ?></h1>
                     </div>
                 </div>
            <div class="tab-content">
@@ -32,10 +32,10 @@
                                 </div>
                                 <div class="d-flex border-top">
                                     <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                        <a class="text-body" href="<?= ROOT_URL . '?ctl=detail&id=' . $pro['id'] ?>"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                                     </small>
                                     <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                                        <a class="text-body" href="<?= ROOT_URL . '?ctl=add-cart&id=' . $product['id'] ?>"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
                                     </small>
                                 </div>
                             </div>

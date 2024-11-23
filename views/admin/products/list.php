@@ -6,7 +6,7 @@
       <?= $message ?>
     </div>
     <?php endif ?>
-<table class="table">
+<table class="table table-striped-columns">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -17,7 +17,7 @@
       <th scope="col">Status</th>
       <th scope="col">Categoty</th>
       <th>
-        <a href="<?= ADMIN_URL . "?ctl=addsp" ?>" class="btn-btn-primary">Create</a>
+        <a href="<?= ADMIN_URL . "?ctl=addsp" ?>" class="btn btn-outline-secondary">Create</a>
       </th>
     </tr>
   </thead>
@@ -34,8 +34,8 @@
       <td><?= $pro['status']?'Đang kinh doanh' : 'Ngừng kinh doanh' ?></td>
       <td><?= $pro['cate_name'] ?></td>
       <td>
-        <a href="<?= ADMIN_URL . "?ctl=editsp&id= " . $pro['id'] ?>" class="btn-btn-primary">Sửa</a>
-        <a href="<?= ADMIN_URL . "?ctl=deletesp&id= " . $pro['id'] ?>" onclick="return confirm('Bạn có muốn xóa không')" class="btn-btn-danger">xóa</a>
+        <a href="<?= ADMIN_URL . "?ctl=editsp&id= " . $pro['id'] ?>" class="btn btn-outline-primary">Sửa</a>
+        <a href="<?= ADMIN_URL . "?ctl=deletesp&id= " . $pro['id'] ?>" onclick="return confirm('Bạn có muốn xóa không')" class="btn btn-outline-danger">xóa</a>
       </td>
     </tr>
     <?php endforeach ?>

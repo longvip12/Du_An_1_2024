@@ -25,6 +25,9 @@
                     $_SESSION["user_name"] = $result->fullname;
                     $_SESSION["user_id"] = $result->id;
                     $_SESSION["user_role"] = $result->role;
+                    if ($result->role == 'admin') {
+                        header("Location: " . ADMIN_URL);die;
+                    }
                     header("Location: ?ctl=home");
 
                     // print_r($_SESSION["account"]);
@@ -38,9 +41,9 @@
        public function logout() {
         if (isset($_SESSION['user_name'])) {
             unset($_SESSION['user_name']);
-            header("Location: ?ctl=home");
-        } else {
             header("Location: ?ctl=login");
+        } else {
+            header("Location: ?ctl=home");
         }
         exit(); // Dừng thực thi sau khi chuyển hướng
     }
