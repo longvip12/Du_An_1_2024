@@ -148,12 +148,20 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword">
                         <button class="btn btn-outline-success" type="button" id="search">Search</button>
             </form>
-                      <?php if(isset($_SESSION["user_name"])) { ?>
-                  
-                    
-                    <a href="#"><?= $_SESSION["user_name"] ?><span>&#11167</span></a>
-                    <a href="<?= ROOT_URL . '?ctl=login' ?>"> Logout </a>
-                    
+          </div>
+
+                <div class="menu">
+                  <li class="drop-two">
+                    <?php if(isset($_SESSION["user"])) { ?>
+                    <a href="#"><?= $_SESSION["user"]['fullname'] ?><span>&#11167</span></a>
+                    <div class="menu-two">
+                      <ul>
+                        <li><a href="contact.html">Profile</a> </li>
+                        <li> <a href="<?= ROOT_URL . '?ctl=logout' ?>"> Logout </a></li>
+                      </ul>
+                    </div>
+                  </li>
+                </div>    
                   
                   <?php } else{ ?>
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="<?= ROOT_URL . '?ctl=login' ?>">
