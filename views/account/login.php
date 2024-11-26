@@ -1,8 +1,5 @@
 
-<?php require_once ROOT_DIR . "views/account/header.php" ?>
-    
-    
-
+<?php require_once ROOT_DIR . "views/account/header.php" ?>    
         <div class="form-container sign-in-container">
             <?php if ($message != '') : ?>
                 <div class="alert alert-success">
