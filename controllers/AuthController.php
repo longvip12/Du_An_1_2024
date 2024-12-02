@@ -58,4 +58,9 @@ class AuthController{
         header('location: ' . ROOT_URL . '?ctl=login');
         die;
     }
+
+    public function index(){
+        $users = (new User)->all();
+        return view('admin.users.list', compact('users'));
+    }
 }

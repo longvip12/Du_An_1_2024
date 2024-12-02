@@ -12,6 +12,7 @@ class homeController
         $categories = (new Category)->all();
 
         $totalQuantity = (new CartController)->totalQuantityCart();
+        $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
 
         return view("clients.home",
          compact('cosmetics','list_products' ,'categories', 'totalQuantity'));

@@ -23,8 +23,13 @@ match ($ctl){
     'search'=>(new SearchController)->search(),
     'detail'    => (new ProductController)->show(),
     'add-cart'  => (new CartController)->addCart(),
+    'view-cart' => (new CartController)->viewCart(),
+    'delete-cart'   => (new CartController)->deleteProductInCart(),
+    'update-cart'   => (new CartController)->updateCart(), 
     'register' =>(new AuthController)->register(),
     'login' =>(new AuthController)->login(),
     'logout' =>(new AuthController)->logout(),
+    'checkout' => (new CartController) -> viewCheckout(),
+
     default => view("err.404"),
 };

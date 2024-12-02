@@ -6,9 +6,11 @@ require_once __DIR__ . "/../common/function.php";
 require_once __DIR__ . "/../models/BaseModel.php";
 require_once __DIR__ . "/../models/Category.php";
 require_once __DIR__ . "/../models/Product.php";
+require_once __DIR__ . "/../models/User.php";
 //include contrllers 
 require_once __DIR__ . "/../controllers/admin/AdminProductController.php";
 require_once __DIR__ . "/../controllers/admin/AdminCategoryController.php";
+require_once __DIR__ . "/../controllers/AuthController.php";
 $ctl = $_GET['ctl'] ?? "";
     match ($ctl) {
     '' => view("admin.dashboard") ,
@@ -24,6 +26,9 @@ $ctl = $_GET['ctl'] ?? "";
     'editdm' => (new AdminCategoryController)->edit(),
     'updatedm' => (new AdminCategoryController)->update(),
     'deletedm' => (new AdminCategoryController)->delete(),
+
+    // user 
+    'listuser' => (new AuthController)->index(),
     default => view('err.404'),
 };
 

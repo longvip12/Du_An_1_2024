@@ -19,13 +19,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= ADMIN_URL ?>">Dashboard</a>
+                            <a class="nav-link active" aria-current="page" href="<?= ROOT_URL ?>">
+                                <img class="logo" src="../img/logo.jpg" alt="Image" width="200px"/>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listdm' ?>">Danh mục</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listsp' ?>">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ADMIN_URL . '?ctl=listuser' ?>">Tài Khoản</a>
                         </li>
 
                     </ul>
