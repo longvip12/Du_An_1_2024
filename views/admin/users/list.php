@@ -27,16 +27,18 @@
       <td>
         <?php if($user['active'] == 1) : ?>
             <span class="badge bg-success">
-                <?= $user['active'] ?>
+                <span class="badge bg-success">
+                Hoạt Động
+            </span>
             </span>
         <?php else : ?>
             <span class="badge bg-danger">
-                Hoạt Động
+                Khóa
             </span>
         <?php endif ?>
       </td>
       <td>
-            Khóa
+            <?= $user['address'] ?>
       </td>
       <td>
             <a href="<?= ADMIN_URL . '?ctl=edituser&id=' . $user['id'] ?>" class="btn btn-primary">EDIT</a>
