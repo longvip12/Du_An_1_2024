@@ -5,7 +5,7 @@
     <div class="row">
         <!-- form thông tin thanh toán -->
          <div class="col-md-7">
-            <form action="" method="POST">
+            <form action="<?= ROOT_URL . '?ctl=checkout' ?>" method="POST">
                 <!-- Thông tin người nhận -->
                  <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" value="<?= $user['email']?>" name="phone"
+                            <input type="email" class="form-control" value="<?= $user['email']?>" name="email"
                             placeholder="Nhập email" required>
                         </div>
                         <div class="mb-3">
@@ -32,6 +32,8 @@
                             <textarea class="form-control" id="address" name="address" rows="3"
                             placeholder="Nhập địa chỉ giao hàng" required><?= $user['address'] ?></textarea>
                         </div>
+
+                       <input type="hidden" name="id" value="<?= $user['id']?>">
                     </div>
                  </div>
 
@@ -42,15 +44,15 @@
                     </div>
                     <div class="card-body">
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="paymnet-method" id="cod" value="cod" checked>
+                            <input class="form-check-input" type="radio" name="payment-method" id="cod" value="cod" checked>
                             <label class="form-check-label" for="cod">
                                 Thanh toán khi giao hàng (COD)
                             </label>
                         </div>
                         <div class="form-check">
-                        <input class="form-check-input" type="radio" name="paymnet-method" id="vnpay" value="vnpay" checked>
-                            <label class="form-check-label" for="cod">
-                                Thanh toán bằng VNPAY 
+                            <input class="form-check-input" type="radio" name="payment-method" id="vnpay" value="vnpay">
+                            <label class="form-check-label" for="vnpay">
+                                Thanh toán bằng VNPAY
                             </label>
                         </div>
                     </div>

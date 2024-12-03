@@ -88,13 +88,78 @@ class CartController
 
     $user = $_SESSION['user'];
     $carts = $_SESSION['carts'] ?? [];
-        $categories = (new Category)->all();
+    $categories = (new Category)->all();
 
     $totalPriceInOrder = (new CartController)->totalPriceInOrder($carts);
-        $totalQuantity = (new CartController)->totalQuantityCart($carts);
+    $totalQuantity = (new CartController)->totalQuantityCart($carts);
 
     return view("clients.carts.checkout", compact('user', 'carts', 'totalPriceInOrder', 'totalQuantity', 'categories'));
 }
+        //THanh toán
+    public function checkout() {
+        //Lấy thông tin người dùng
+        $user = [
+            'id' => $_POST['id'],
+            'fullname' => $_POST['fullname'],
+            'phone' => $_POST['phone'],
+            'address' => $_POST['address'],
+            'role' => $_SESSION['user']['role'],
+            'active' => $_SESSION['user']['active'],
+        ];
+
+        $payment_method = isset($_POST['payment_method']) ? $_POST['payment_method'] : null;
+        if ($payment_method === null) {
+        // Trả về lỗi hoặc thông báo cho người dùng chọn phương thức thanh toán
+        // die("Vui lòng chọn phương thức thanh toán");
+        echo ("Thanh toán thành công");
+        header("Location: " . ROOT_URL . "?ctl=success");
+        exit();
+        }
+
+        //Lấy thông tin thanh toán
+        $order = [
+            'user_id' => $_POST['id'],
+            'status' => 1,
+            'payment_method' => $payment_method,
+            'total_price' => $this->totalPriceInOrder()
+        ];
+
+        (new User)->update($user['id'], $user);
+        $order_id = (new Order)-> create($order);
+
+        $carts = $_SESSION['cart'];
+        foreach( $carts as $id => $cart ){
+            $or_detail = [
+                'order_id' => $order_id,
+                'product_id' => $id,
+                'price' => $cart['price'],
+                'quantity' => $cart['quantity']
+            ];
+            (new Order)->createOrderDetail($or_detail);
+        }
+        $this->clearCart(); //Xóa thông tin giỏ hàng
+        //echo "Đặt hàng thành công";
+        return header("Location: " . ROOT_URL . "?ctl=success");
+
+    }
+    
+    //xóa giỏ hàng
+    public function clearCart(){
+        unset($_SESSION['cart']);
+        unset($_SESSION['totalQuantity']);
+        unset($_SESSION['URI']);
+    }
+
+    public function success() {
+        unset($_SESSION['cart']);
+        unset($_SESSION['totalQuantity']);
+        unset($_SESSION['URI']);
+        $categories = (new Category)->all();
+        $totalPriceInOrder = (new CartController)->totalPriceInOrder();
+        $totalQuantity = (new CartController)->totalQuantityCart();
+        return view("clients.carts.success",  compact(  'totalPriceInOrder', 'totalQuantity', 'categories'));
+
+    }
     
 
 }

@@ -11,6 +11,8 @@ require_once __DIR__ . "/models/User.php";
 require_once __DIR__ . "/common/function.php";
 require_once __DIR__ . "/controllers/SearchController.php";
 require_once __DIR__ . "/controllers/CartController.php";
+require_once __DIR__ . "/models/Order.php";
+
 
 
 
@@ -29,7 +31,8 @@ match ($ctl){
     'register' =>(new AuthController)->register(),
     'login' =>(new AuthController)->login(),
     'logout' =>(new AuthController)->logout(),
-    'checkout' => (new CartController) -> viewCheckout(),
-
+    'view-checkout' => (new CartController) -> viewCheckout(),
+    'checkout' => (new CartController) -> checkout(),
+    'success' => (new CartController) -> success(),
     default => view("err.404"),
 };

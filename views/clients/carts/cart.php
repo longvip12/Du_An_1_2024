@@ -59,7 +59,7 @@
                     <i class="bi bi-arrow-clockwise"></i> Cập nhật giỏ hàng
                 </button>
                 <button type="button" class="btn btn-success">
-                    <a href="<?= ROOT_URL . '?ctl=checkout' ?>"><i class="bi bi-credit-card"></i> Thanh toán</a>
+                    <a href="<?= ROOT_URL . '?ctl=view-checkout' ?>"><i class="bi bi-credit-card"></i> Thanh toán</a>
                 </button>
             </div>
         </div>
