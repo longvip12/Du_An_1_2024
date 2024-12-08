@@ -41,7 +41,17 @@
             <?= $user['address'] ?>
       </td>
       <td>
-            <a href="<?= ADMIN_URL . '?ctl=edituser&id=' . $user['id'] ?>" class="btn btn-primary">EDIT</a>
+            <form action="<?= ADMIN_URL . '?ctl=updateuser' ?>" method="post">
+              <input type="hidden" name="id" value="<?= $user['id'] ?>">
+              <input type="hidden" name="active" value="<?= $user['active'] ?>">
+              <?php if($user['role'] !='admin') : ?>
+              <?php if($user['active'] ==1 ) : ?>
+                <button type="submit" class="btn btn-danger" >Khóa</button>
+              <?php else : ?>
+                <button type="submit" class="btn btn-primary" >kích hoạt</button>
+              <?php endif ?>
+              <?php endif ?>
+            </form>
       </td>
     </tr>
     <?php endforeach ?>

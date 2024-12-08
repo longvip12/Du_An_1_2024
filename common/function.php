@@ -18,3 +18,19 @@ function session_flash($key)
     unset($_SESSION[$key]);
     return $message;
 }
+// chuyển đổi trạng thái đơn hàng
+function getOderStatus($status){
+    $status_details=[
+        1 => 'chờ xử lý',
+        2=> 'Đang xử lý',
+        3 => 'Hoàn Thành',
+        4 => 'Đã Hủy'
+    ];
+    return $status_details[$status];
+}
+
+function clearCart(){
+        unset($_SESSION['cart']);
+        unset($_SESSION['totalQuantity']);
+        unset($_SESSION['URI']);
+    }

@@ -2,6 +2,12 @@
 
 class AdminCategoryController
 {
+    public function __construct(){
+    $user = $_SESSION['user']??[];
+    if(!$user || $user['role'] != 'admin'){
+        header("location: " . ROOT_URL);
+        }
+    }
     public function index()
     {
         //Lấy session thông báo

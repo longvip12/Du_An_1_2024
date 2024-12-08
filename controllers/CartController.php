@@ -87,7 +87,7 @@ class CartController
     }
 
     $user = $_SESSION['user'];
-    $carts = $_SESSION['carts'] ?? [];
+    $carts = $_SESSION['cart'] ?? [];
     $categories = (new Category)->all();
 
     $totalPriceInOrder = (new CartController)->totalPriceInOrder($carts);
@@ -137,23 +137,14 @@ class CartController
             ];
             (new Order)->createOrderDetail($or_detail);
         }
-        $this->clearCart(); //Xóa thông tin giỏ hàng
+        clearCart(); //Xóa thông tin giỏ hàng
         //echo "Đặt hàng thành công";
         return header("Location: " . ROOT_URL . "?ctl=success");
 
-    }
-    
+    }   
     //xóa giỏ hàng
-    public function clearCart(){
-        unset($_SESSION['cart']);
-        unset($_SESSION['totalQuantity']);
-        unset($_SESSION['URI']);
-    }
-
     public function success() {
-        unset($_SESSION['cart']);
-        unset($_SESSION['totalQuantity']);
-        unset($_SESSION['URI']);
+        clearCart(); //Xóa thông tin giỏ hàng
         $categories = (new Category)->all();
         $totalPriceInOrder = (new CartController)->totalPriceInOrder();
         $totalQuantity = (new CartController)->totalQuantityCart();
