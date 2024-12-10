@@ -19,7 +19,7 @@
                             <div class="product-item">
                               
                                 <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="<?= $product['image'] ?>" alt="">
+                                    <img class="img-fluid w-100" src="<?= $product['image'] ?>" alt="" style="width: 100%; /* Đặt chiều rộng hình ảnh là 100% */height: 200px; /* Tự động điều chỉnh chiều cao */">
                                     <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
                                 </div>
                                 <div class="text-center p-4">

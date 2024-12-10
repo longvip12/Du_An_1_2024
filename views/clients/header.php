@@ -135,9 +135,9 @@
                     <a href="#">About us <span>&#11167</span></a>
                     <div class="menu-two">
                       <ul>
-                        <li><a href="contact.html">Liên hệ với chúng tôi</a> </li>
-                        <li><a href="about.html">Về Cosmetics</a></li>
-                        <li><a href="lie.html">Đổi trả sản phẩm</a></li>
+                        <li><a href="lienhe.html">Liên hệ với chúng tôi</a> </li>
+                        <li><a href="gioithieu.html">Về Cosmetics</a></li>
+                        <li><a href="doitra.html">Đổi trả sản phẩm</a></li>
                       </ul>
                     </div>
                   </li>
