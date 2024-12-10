@@ -4,6 +4,7 @@ require_once __DIR__ . "/env.php";
 require_once __DIR__ . "/controllers/homeController.php";
 require_once __DIR__ . "/controllers/ProductController.php";
 require_once __DIR__ . "/controllers/AuthController.php";
+require_once __DIR__ . "/controllers/OrderController.php";
 require_once __DIR__ . "/models/BaseModel.php";
 require_once __DIR__ . "/models/Category.php";
 require_once __DIR__ . "/models/Product.php";
@@ -12,6 +13,8 @@ require_once __DIR__ . "/common/function.php";
 require_once __DIR__ . "/controllers/SearchController.php";
 require_once __DIR__ . "/controllers/CartController.php";
 require_once __DIR__ . "/models/Order.php";
+require_once __DIR__ . "/models/Comment.php";
+
 
 
 
@@ -34,5 +37,8 @@ match ($ctl){
     'view-checkout' => (new CartController) -> viewCheckout(),
     'checkout' => (new CartController) -> checkout(),
     'success' => (new CartController) -> success(),
+    'list-order' =>(new OrderController) ->showOrderUser(),
+    'order-detail-user' =>(new OrderController) ->detailOrderUser(),
+    
     default => view("err.404"),
 };

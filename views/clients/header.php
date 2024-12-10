@@ -157,6 +157,7 @@
                     <div class="menu-two">
                       <ul>
                         <li><a href="contact.html">Profile</a> </li>
+                        <li><a href="<?= ROOT_URL . '?ctl=list-order' ?>">Lịch sử đơn hàng</a> </li>
                         <li> <a href="<?= ROOT_URL . '?ctl=logout' ?>"> Logout </a></li>
                       </ul>
                     </div>

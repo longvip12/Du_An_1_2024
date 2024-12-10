@@ -66,6 +66,7 @@ class CartController
         //Xóa sản phẩm trong giỏ hàng
         unset($_SESSION['cart'][$id]);
         //chuyển về giỏ hàng
+        $_SESSION['totalQuantity'] = (new CartController)->totalQuantityCart();
         return header("location: " . ROOT_URL . '?ctl=view-cart');
     }
 
@@ -106,12 +107,13 @@ class CartController
             'role' => $_SESSION['user']['role'],
             'active' => $_SESSION['user']['active'],
         ];
-
-        $payment_method = isset($_POST['payment_method']) ? $_POST['payment_method'] : null;
+        $payment_method = $_POST['payment_method'];
+        dd($payment_method);
         if ($payment_method === null) {
         // Trả về lỗi hoặc thông báo cho người dùng chọn phương thức thanh toán
         // die("Vui lòng chọn phương thức thanh toán");
-        echo ("Thanh toán thành công");
+        // echo ("Thanh toán thành công");
+        // die;
         header("Location: " . ROOT_URL . "?ctl=success");
         exit();
         }
@@ -120,13 +122,12 @@ class CartController
         $order = [
             'user_id' => $_POST['id'],
             'status' => 1,
-            'payment_method' => $payment_method,
+            'payment_method' => $_POST['payment_method'],
             'total_price' => $this->totalPriceInOrder()
         ];
 
         (new User)->update($user['id'], $user);
         $order_id = (new Order)-> create($order);
-
         $carts = $_SESSION['cart'];
         foreach( $carts as $id => $cart ){
             $or_detail = [

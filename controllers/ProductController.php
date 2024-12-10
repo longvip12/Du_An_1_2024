@@ -25,6 +25,14 @@
         $id = $_GET['id'];
         //Lấy ra sản phẩm theo id
         $product = (new Product)->find($id);
+        // Thêm comment 
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $data = $_POST;
+            // Thêm product_id và user_id 
+            $data['product_id'] =$id;
+            $data['user_id'] = $_SESSION['user']['id'];
+            (new Comment)->create($data);
+        }
         //Lấy tên sản phẩm đưa và title
         $title = $product['name'] ?? '';
         //lấy danh mục
@@ -32,9 +40,12 @@
         //Lưu URI vào session
         $_SESSION['URI'] = $_SERVER['REQUEST_URI'];
         $totalQuantity = (new CartController)->totalQuantityCart();
+
+        // Lấy danh sách comment 
+        $comments = (new Comment)->listCommentInProductClient($id);
         return view(
             'clients.products.detail',
-            compact('product', 'title', 'categories', 'totalQuantity')
+            compact('product', 'title', 'categories', 'totalQuantity','comments')
         );
     }
  }

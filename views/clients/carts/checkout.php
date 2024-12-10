@@ -44,13 +44,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="payment-method" id="cod" value="cod" checked>
+                            <input class="form-check-input" type="radio" name="payment_method" id="cod" value="cod" checked>
                             <label class="form-check-label" for="cod">
                                 Thanh toán khi giao hàng (COD)
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment-method" id="vnpay" value="vnpay">
+                            <input class="form-check-input" type="radio" name="payment_method" id="vnpay" value="vnpay">
                             <label class="form-check-label" for="vnpay">
                                 Thanh toán bằng VNPAY
                             </label>

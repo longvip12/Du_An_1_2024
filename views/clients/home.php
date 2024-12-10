@@ -43,16 +43,13 @@
                                     <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
                                 </div>
                                 <div class="text-center p-4">
-                                    <a class="d-block h5 mb-2" href=""><?= $cos['name'] ?></a>
+                                    <a class="d-block h5 mb-2" href="<?= ROOT_URL . '?ctl=detail&id=' . $cos['id'] ?>"><?= $cos['name'] ?></a>
                                     <span class="text-primary me-1"><?= $cos['price'] ?> VNĐ</span>
                                 </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
+                                <div class="center border-top">
+                                
                                         <a class="text-body" href="<?= ROOT_URL . '?ctl=detail&id=' . $cos['id'] ?>"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                    </small>
+                                    
                                 </div>
                             </div>
                         </div>                        
@@ -88,14 +85,14 @@
                                     <a class="d-block h5 mb-2" href="<?= ROOT_URL . '?ctl=detail&id=' . $pro['id'] ?>"><?= $pro['name'] ?></a>
                                     <span class="text-primary me-1"><?= $pro['price'] ?> VNĐ</span>
                                 </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href="<?= ROOT_URL . '?ctl=detail&id=' . $pro['id'] ?>"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href="<?= ROOT_URL . '?ctl=add-cart&id=' . $product['id'] ?>"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                    </small>
+                                
+                                    <div class="center border-top">
+                                
+                                        <a class="text-body" href="<?= ROOT_URL . '?ctl=detail&id=' . $cos['id'] ?>"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                    
                                 </div>
+                        
+                                
                             </div>
                         </div>
                         <?php endforeach ?>

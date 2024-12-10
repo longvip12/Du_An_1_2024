@@ -1,10 +1,6 @@
-<?php include_once ROOT_DIR . "views/admin/header.php" ?>
+
+<?php include_once ROOT_DIR . "views/clients/header.php" ?>
 <div class="container mt-5">
-    <?php if($message != "") : ?>
-        <div class="alert alert-success" >
-            <?= $message ?>
-        </div>
-    <?php endif ?>
         <div class="card">
             <div class="card-header bg-dark text-white">
                 <h4>Chi tiết đơn hàng</h4>
@@ -14,6 +10,7 @@
                 <div class="mb-4">
                     <h5>Mã đơn hàng: #<?= $order['id']?></h5>
                     <p><strong>Ngày đặt hàng:</strong><?= date('d-m-y H:i:s', strtotime($order['created_at']))?></p>
+                    <p><strong>Trạng thái: <span class="btn btn-success"><?= getOderStatus($order['status']) ?></span></strong></p>
                 </div>
 
                 <!-- Thông tin khách hàng -->
@@ -48,9 +45,9 @@
                                     <img src="<?= ROOT_URL . $detail['image']?>"
                                     width="60" alt="">
                                 </td>
+                                <td><?= number_format($detail['price'])?></td>
                                 <td><?= $detail['quantity']?></td>
-                                <td><?= number_format($detail['price'])?> VNĐ</td>
-                                <td><?= number_format($detail['price'] * $detail['quantity'])?>VNĐ</td>
+                                <td><?= number_format($detail['price'] * $detail['quantity'])?>vnd</td>
                             </tr>
                             <?php endforeach?>
                             
@@ -64,45 +61,22 @@
                     </table>
                 </div>
 
-                <!-- Cập nhật trạng thái đơn hàng -->
+                
                 <div class="mb-4">
-                    <h5>Cập nhật trạng thái đơn hàng</h5>
-                    <form action="" method="POST">
-                        <div class="mb-3">
-                            <label for="orderStatus" class="form-label">Trạng thái đơn hàng</label>
-                            <select id="orderStatus" name="status" class="form-select">
-                              <?php foreach($status as $key => $value): ?>  
-                            <option value="<?= $key ?>" 
-                                <?= $order['status'] == $key ? 'selected' : '' ?>
-                                <?php
-                                    if($order['status'] == 2 && in_array($key, [1,4])){
-                                        echo "disabled";
-
-                                    }elseif($order['status'] == 3 && in_array($key, [1,2,4])){
-                                        echo "disabled";
-                                    }elseif($order['status'] == 4 && in_array($key, [1,2,3])){
-                                        echo "disabled";
-                                    }
-                                ?>>
-                                <?= $value ?>
-                                
-                            </option>
-                               <?php endforeach ?>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    </form>
+                    <?php if($order['status'] == 1) : ?>
+                        <form action="" method="post">     
+                         <button class="btn btn-danger">Hủy Đơn Hàng</button>   
+                        </form>
+                    
+                    <?php endif ?>
                 </div>
 
                 <!-- Nút thao tác -->
                 <div class="d-flex justify-content-between">
-                    <a href="<?= ADMIN_URL . '?ctl=list-order' ?>" class="btn btn-secondary">Quay lại danh sách đơn hàng</a>
+                    <a href="/admin/orders" class="btn btn-secondary">Quay lại danh sách đơn hàng</a>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-
-<?php include_once ROOT_DIR . "views/admin/footer.php" ?>
+<?php include_once ROOT_DIR . "views/clients/footer.php" ?>

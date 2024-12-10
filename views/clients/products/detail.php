@@ -58,12 +58,10 @@
                                 </p>
                                 <div class="form-group">
                                     <label for="soluong">Số lượng còn: <?= $product['quantity'] ?></label>
-                                    <input type="number" class="form-control" id="soluong" name="soluong">
                                 </div>
                                
                                 <div class="action">
                                     <a class="add-to-cart btn btn-outline-red border-2 py-2 px-4 mt-2" id="btnThemVaoGioHang" href="<?= ROOT_URL . '?ctl=add-cart&id=' . $product['id'] ?>">Thêm vào giỏ hàng</a>
-                                    <a class="add-to-cart btn btn-outline-red border-2 py-2 px-4 mt-2" id="btnMuaNgay">Mua Ngay</a>
                                     <a class="like btn  border-2 py-2 px-4 mt-2 rounded-pill" href="#"><span class="fa fa-heart"></span></a>
                                 </div>
                             </div>
@@ -85,6 +83,23 @@
 <br>🌺Rosehip Oil chính là tinh dầu Tầm Xuân – đây là một loại tinh dầu thích hợp dùng cho làn môi nứt nẻ, hằn sâu, nhiều vết thâm và thường xuyên mất nước.
 <br>🌺Omega 3, Omega 6 và các a-xít béo thiết yếu: Các hợp chất lipid (chất béo) trong các chất này là nhân tố quan trọng trong quá trình dưỡng ẩm đối với làn môi khô và cải thiện độ mềm mại và độ đàn hồi của môi. Các axit béo thiết yếu rất quan trọng đối với sức khỏe của da của chúng ta, tuy nhiên cơ thể của chúng ta lại không thể tạo ra chúng – vì vậy dưỡng chất này giống như bổ sung những gì còn thiếu cho làn da, làm thỏa mãn “cơn khát”
 <br>🌺Acacia Collagen : là một kết hợp giữa collagen và Phyto, có tính chất làm se, kích thích các tế bào da sản xuất thêm collagen. Giúp làn da môi phục hồi nhanh chóng và giữ suốt 24h.
-                                        
-                        </div>
+</div>
+<h1>Bình Luận</h1>
+<div class="comment"></div>
+<?php foreach($comments as $comment ) : ?>
+    <p>
+        <b><?= $comment['fullname'] ?></b> <?= date('d-m-Y H:i:s', strtotime($comment['created_at']) ) ?> <br>
+        <?= $comment['content'] ?>
+    </p>
+    <?php endforeach ?>
+</div>
+<?php if(isset($_SESSION['user'])) : ?>
+    <form action="" method="post">
+        <textarea name="content" rows="3" cols="60" required id=""></textarea>
+        <br>
+        <button type="submit">Gửi</button>
+    </form>
+    <?php else: ?>
+        <div>Bạn cần <a href="<?= ROOT_URL .  '?ctl=login'?>">đăng nhập</a>  để bình luận</div>
+<?php endif ?>
 <?php include_once ROOT_DIR . "views/clients/footer.php" ?>
