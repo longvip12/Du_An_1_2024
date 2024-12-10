@@ -33,7 +33,10 @@ class AuthController{
 
             // kiểm tra mật khẩu 
             if ($user) {
-                if (password_verify($password,$user['password'])){
+                if ($user['active'] == 0) {
+                    $erron = "Tài khoản của bạn đã bị khóa.";
+                }
+                elseif (password_verify($password,$user['password'])){
                     $_SESSION['user'] = $user;
                     //kiểm tra role =1 vào admin 
                     if($user['role'] == 'admin'){
@@ -66,7 +69,7 @@ class AuthController{
     }
     public function updateActive(){
         $data = $_POST;
-        $data['active'] = $data['active']? 0 : 1;
+        $data['active'] = $data['active'] ? 0 : 1;
         (new User)->updateActive($data['id'], $data['active']);
         return header('Location: ' . ADMIN_URL . '?ctl=listuser');
 

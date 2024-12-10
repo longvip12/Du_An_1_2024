@@ -34,7 +34,7 @@
                                     </li>
                                     <li class="">
                                         <a data-target="#pic-3 " data-toggle="tab" class="active">
-                                            <img src="<?= $product['image'] ?>" alt="">
+                                            <img src="<?= $product['image'] ?>" alt="" style="width: 100%; /* Đặt chiều rộng hình ảnh là 100% */height: 500px; /* Tự động điều chỉnh chiều cao */ margin-left: 100px" >
                                         </a>
                                     </li>
                                 </ul>
@@ -42,7 +42,7 @@
                             <div class="details col-md-6">
                                 <h3 class="product-title"> <?= $product['name'] ?> </h3>
                                 <p>Trạng thái:
-                                    <?php if ($product['quantity'] > 0) : ?>
+                                    <?php if ($product['status'] > 0) : ?>
                                         <span class="badge bg-success">Còn hàng</span>
                                     <?php else : ?>
                                         <span class="badge bg-danger">Hết hàng</span>
@@ -57,11 +57,21 @@
                                     <?= $product['description'] ?>
                                 </p>
                                 <div class="form-group">
-                                    <label for="soluong">Số lượng còn: <?= $product['quantity'] ?></label>
+                                    <?php if ($product['status'] > 0) : ?>
+                                        <label for="soluong">Số lượng còn: <?= $product['quantity'] ?></label>
+                                    <?php else : ?>
+                                        
+                                    <?php endif ?>
+                                    
                                 </div>
                                
                                 <div class="action">
-                                    <a class="add-to-cart btn btn-outline-red border-2 py-2 px-4 mt-2" id="btnThemVaoGioHang" href="<?= ROOT_URL . '?ctl=add-cart&id=' . $product['id'] ?>">Thêm vào giỏ hàng</a>
+                                    <?php if ($product['status'] > 0) : ?>
+                                        <a class="add-to-cart btn btn-outline-red border-2 py-2 px-4 mt-2" id="btnThemVaoGioHang" href="<?= ROOT_URL . '?ctl=add-cart&id=' . $product['id'] ?>">Thêm vào giỏ hàng</a>
+                                    <?php else : ?>
+                                        <span class="add-to-cart btn btn-outline-red border-2 py-2 px-4 mt-2" id="btnThemVaoGioHang" >Sản phẩm ngừng kinh doanh</span>
+                                    <?php endif ?>
+                                    
                                     <a class="like btn  border-2 py-2 px-4 mt-2 rounded-pill" href="#"><span class="fa fa-heart"></span></a>
                                 </div>
                             </div>

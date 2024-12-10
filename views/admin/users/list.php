@@ -45,7 +45,7 @@
               <input type="hidden" name="id" value="<?= $user['id'] ?>">
               <input type="hidden" name="active" value="<?= $user['active'] ?>">
               <?php if($user['role'] !='admin') : ?>
-              <?php if($user['active'] ==1 ) : ?>
+              <?php if($user['active'] == 1 ) : ?>
                 <button type="submit" class="btn btn-danger" >Khóa</button>
               <?php else : ?>
                 <button type="submit" class="btn btn-primary" >kích hoạt</button>
